@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vegetation Encroachment Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        section {
+            max-width: 600px;
+            max-height: 500px;
+            margin: 20px auto;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .component {
+            flex: 0 0 45%;
+            margin: 20px;
+            padding: 30px;
+            background-color: #a4a0a0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            display: flex; /* Center-align the content */
+            flex-direction: column; /* Stack child elements vertically */
+            align-items: center; /* Center-align child elements horizontally */
+        }
+
+        .component:hover {
+            transform: scaleX(1.1) scaleY(1.1);
+        }
+
+        .component img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-member {
+            margin: 0 60px;
+            text-align: center;
+        }
+
+        .team-member img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h4 {
+            margin-left: 35px;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Vegetation Encroachment Risk Assessment Near Electric Poles</h1>
+    </header>
+
+    <h2>Welcome to our project</h2>
+
+    <p><h4>
+        As our dependence on electrical power continues to grow, ensuring the reliability and safety of power distribution infrastructure becomes paramount. This project delves into the critical issue of vegetation encroachment near electric poles, a challenge that poses potential risks to both infrastructure integrity and public safety. The unchecked growth of vegetation in proximity to electric poles can lead to disruptions in power supply, fire hazards, and structural damage, necessitating a proactive approach in risk assessment and mitigation.
+    </h4></p>
+
+    <p><h4>
+        Our mission is to develop a robust Vegetation Encroachment Risk Assessment system that utilizes cutting-edge technologies to identify and evaluate the potential threats posed by nearby vegetation to electric poles. By implementing advanced data analysis and machine learning techniques, we aim to provide utility companies and maintenance crews with timely and accurate information, enabling them to prioritize and address areas of high risk efficiently. Through this project, we strive to enhance the resilience of power distribution networks and contribute to a safer and more reliable electrical infrastructure.
+    </h4></p>
+
+    <section>
+
+        <div class="component" onclick="window.location.href='page1.html'">
+            <img src="image1.jpg" alt="Component 1">
+            <h2>Areal Images</h2>
+            <p>The image imput provided in this case can be taken from google images</p>
+        </div>
+
+        <div class="component" onclick="window.location.href='page2.html'">
+            <img src="image2.webp" alt="Component 2">
+            <h2>Normal Images</h2>
+            <p>The image imput provided in this case must be taken from google street view</p>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="team-member">
+            <img src="x.jpg" alt="Member 1">
+            <p>Member 1</p>
+        </div>
+
+        <div class="team-member">
+            <img src="x.jpg" alt="Member 2">
+            <p>Member 2</p>
+        </div>
+
+        <div class="team-member">
+            <img src="x.jpg" alt="Member 3">
+            <p>Member 3</p>
+        </div>
+
+        <div class="team-member">
+            <img src="x.jpg" alt="Member 4">
+            <p>Member 4</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetation Risk Assessment in Areal Images</title>
+    <!-- Include the existing styles or add your own -->
+    <style>
+        /* Your custom styles go here */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        section {
+            max-width: 800px; /* Adjusted for a wider section */
+            margin: 20px auto;
+            text-align: center;
+            display: flex;
+            justify-content: space-around; /* Adjusted for equal space distribution */
+        }
+
+        .new-component {
+            flex: 0 0 45%;
+            margin: 20px;
+            padding: 30px;
+            background-color: #a4a0a0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex; /* Center-align the content */
+            flex-direction: column; /* Stack child elements vertically */
+            align-items: center; /* Center-align child elements horizontally */
+        }
+
+        .new-component img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .radio-buttons {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-member {
+            margin: 0 60px;
+            text-align: center;
+        }
+
+        .team-member img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h4 {
+            margin-left: 35px;
+            margin-right: 30px;
+        }
+
+        #imageUpload {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Vegetation Risk Assessment in Areal Images</h1>
+    </header>
+
+    <section>
+        <div class="new-component" id="component1">
+            <label for="imageUpload" class="custom-upload">
+                Drag & Drop or Click to Upload Image
+            </label>
+            <input type="file" id="imageUpload" accept="image/*" oninput="displayImage(this)">
+            <img id="uploadedImage" alt="Uploaded Image" src="imput.webp">
+            <div class="radio-buttons">
+                <label>
+                    <input type="radio" name="assessmentType" value="option1" checked>
+                    Option 1
+                </label>
+                <label>
+                    <input type="radio" name="assessmentType" value="option2">
+                    Option 2
+                </label>
+            </div>
+            <button onclick="submitImage()">Submit</button>
+        </div>
+    </section>
+
+    <section>
+        <div class="new-component" id="component2">
+            <!-- Response image will be displayed here -->
+        </div>
+    </section>
+
+    <footer>
+        <!-- Your team members' information goes here -->
+    </footer>
+
+    <script>
+        function displayImage(input) {
+            const uploadedImage = document.getElementById('uploadedImage');
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    uploadedImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function submitImage() {
+    const uploadedImage = document.getElementById('uploadedImage');
+    const assessmentType = document.querySelector('input[name="assessmentType"]:checked').value;
+
+    if (!uploadedImage.src || uploadedImage.src === '') {
+        alert('Please upload an image before submitting.');
+        return;
+    }
+
+    // Convert the image to a base64 data URL
+    const imageDataURL = uploadedImage.src;
+    
+    // Simulate FormData to send the image and assessment type
+    const formData = new FormData();
+    formData.append('image', imageDataURL);
+    formData.append('assessmentType', assessmentType);
+
+    // Replace the URL with your actual server endpoint
+    const serverEndpoint = 'http://localhost:5000/process_image';
+
+    // Make a fetch request to the server
+    fetch(serverEndpoint, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Assuming the server responds with an object containing the image URL
+        const responseImageURL = data.imageUrl;
+
+        // Replace the content of component2 with the response image
+        const component2 = document.getElementById('component2');
+        component2.innerHTML = `<img src="${responseImageURL}" alt="Response Image">`;
+    })
+    .catch(error => {
+        console.error('Error submitting image:', error);
+        // Handle error scenario, e.g., display an error message to the user
+    });
+}
+
+    </script>
+</body>
+
+</html>
